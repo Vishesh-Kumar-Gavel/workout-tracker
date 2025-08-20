@@ -16,10 +16,10 @@ public class ExerciseSet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "exercise_id",nullable=false)
-	private Exercise exercise;
-	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "exercise_id",nullable=false)
+//	private Exercise exercise;
+//	
 	private int weight;
 	private int reps;
 }

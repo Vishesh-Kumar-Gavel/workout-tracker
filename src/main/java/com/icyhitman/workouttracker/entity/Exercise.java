@@ -30,7 +30,7 @@ public class Exercise {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "workout_id",nullable= false)
 	private Workout workout;
-	
-	@OneToMany(mappedBy = "exercise" ,cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ExerciseSet> sets = new ArrayList<>();
+//	
+//	@OneToMany(mappedBy = "exercise" ,cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<ExerciseSet> sets = new ArrayList<>();
 }
