@@ -13,7 +13,7 @@ import com.icyhitman.workouttracker.repository.WorkoutRepository;
 import dto.ExerciseDTO;
 import dto.WorkoutRequest;
 
-@Service
+@Service()
 public class WorkoutService {
 	@Autowired
 	private WorkoutRepository workoutRepository ;
