@@ -3,6 +3,7 @@ package com.icyhitman.workouttracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,5 +29,10 @@ public class WorkoutController {
 	 public WorkoutRequest createWorkout(@RequestBody WorkoutRequest workout) {		 
 		 workoutService.createWorkout(workout);
 		 return workout;
+	 }
+	 
+	 @DeleteMapping
+	 public Boolean deleteWorkout(@RequestBody String workoutName) {
+		 return workoutService.deleteWorkout(workoutName);
 	 }
 }

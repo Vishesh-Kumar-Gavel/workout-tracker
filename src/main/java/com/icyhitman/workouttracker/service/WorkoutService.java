@@ -47,4 +47,26 @@ public class WorkoutService {
 		}
 		return workoutRequests;
 	}
+	
+	public Boolean deleteWorkout(String workoutName) {
+		List<Workout> workouts = workoutRepository.findByName(workoutName);
+		if(workouts!=null && workouts.size()>0) {
+			workoutRepository.deleteById(workouts.get(0).getId());
+			return true;
+		}
+		return false;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
