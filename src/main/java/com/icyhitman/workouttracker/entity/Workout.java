@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,15 +20,12 @@ public class Workout {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "user_id")
-//	private User user;
-//	
+	private String name;	
 	@OneToMany(mappedBy = "workout" ,cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Exercise> exercises = new ArrayList<>();
+	
+	
+	
 	
 	public void addExercise(Exercise exercise) {
 		this.exercises.add(exercise);

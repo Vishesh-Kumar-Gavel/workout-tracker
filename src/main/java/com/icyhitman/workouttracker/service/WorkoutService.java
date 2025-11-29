@@ -9,21 +9,24 @@ import org.springframework.stereotype.Service;
 import com.icyhitman.workouttracker.entity.Exercise;
 import com.icyhitman.workouttracker.entity.Workout;
 import com.icyhitman.workouttracker.repository.WorkoutRepository;
+import com.icyhitman.workouttracker.dto.ExerciseRequest;
+import com.icyhitman.workouttracker.dto.WorkoutRequest;
 
-import dto.ExerciseDTO;
-import dto.WorkoutRequest;
+import com.icyhitman.workouttracker.service.WorkoutService;
 
 @Service()
 public class WorkoutService {
 	@Autowired
 	private WorkoutRepository workoutRepository ;
 	
-	public  Workout createWorkout(WorkoutRequest request) {
-		Workout workout = new Workout(request.getName());
-		if(request.getExercises()!= null) {
-			for(ExerciseDTO exercise : request.getExercises()) {
-				Exercise ex = new Exercise();
-				ex.setName(exercise.getName());
+	public  Workout createWorkout(WorkoutRequest workoutRequest) {
+		Workout workout = new Workout(workoutRequest.getName());
+		if(workoutRequest.getExercises()!= null) {
+			for(ExerciseRequest exercise : workoutRequest.getExercises()) {
+				Exercise ex =  Exercise.builder()
+						.name(exercise.getName())
+						.sets(exercise.getSets()).reps(exercise.getReps())
+						.build();
 				workout.addExercise(ex);
 			}
 		}
@@ -36,10 +39,10 @@ public class WorkoutService {
 		List<WorkoutRequest> workoutRequests = new ArrayList<>();
 		for(Workout w : workouts) {
 			WorkoutRequest workoutRequest = new WorkoutRequest();
-			List<ExerciseDTO> workoutRequestExercises = new ArrayList<>();
+			List<ExerciseRequest> workoutRequestExercises = new ArrayList<>();
 			workoutRequest.setName(w.getName());
 			for(Exercise e : w.getExercises()) {
-				ExerciseDTO e1 = new ExerciseDTO(e.getName());
+				ExerciseRequest e1 = new ExerciseRequest(e.getName(),e.getSets(),e.getReps());
 				workoutRequestExercises.add(e1);
 			}
 			workoutRequest.setExercises(workoutRequestExercises);

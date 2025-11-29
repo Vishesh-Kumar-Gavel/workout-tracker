@@ -1,7 +1,5 @@
 package com.icyhitman.workouttracker.entity;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +13,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Exercise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	private int sets;
+	private String reps;
 	@Column(nullable = false)
 	private String name;
 	
@@ -33,11 +36,4 @@ public class Exercise {
 	@JoinColumn(name = "workout_id",nullable= false)
 	private Workout workout;
 	
-//	public Exercise(String name, Workout workout) {
-//        this.name = name;
-//        this.workout = workout;
-//    }
-//	
-//	@OneToMany(mappedBy = "exercise" ,cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<ExerciseSet> sets = new ArrayList<>();
 }

@@ -1,4 +1,5 @@
 package com.icyhitman.workouttracker.controller;
+import com.icyhitman.workouttracker.dto.WorkoutRequest;
 
 import java.util.List;
 
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.icyhitman.workouttracker.service.WorkoutService;
-
-import dto.WorkoutRequest;
 
 @RestController
 @RequestMapping(value = "/workouts")
